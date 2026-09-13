@@ -1,6 +1,3 @@
-mkdir -p ~/.config/ractuzed/{sway,waybar,wofi,mako,alacritty}
-
-cat << 'EOF' > ~/.config/ractuzed/sway/config
 set $mod Mod4
 set $term alacritty
 set $menu wofi --show drun
@@ -9,7 +6,7 @@ font pango: JetBrains Mono 10
 default_border pixel 2
 gaps inner 24
 gaps outer 8
-output * bg #2e3440 solid_color
+output * bg ~/.config/ractuzed/wallpapers/nord-wallpaper.jpg fill
 bindsym $mod+Return exec $term
 bindsym $mod+Space exec $menu
 bindsym $mod+Shift+q kill
@@ -53,74 +50,3 @@ bindsym $mod+Shift+4 move container to workspace $ws4
 bindsym $mod+Shift+5 move container to workspace $ws5
 exec waybar
 exec mako
-EOF
-
-cat << 'EOF' > ~/.config/ractuzed/sway/colors.conf
-client.background #2e3440
-client.focused #88c0d0 #2e3440 #eceff4 #88c0d0 #88c0d0
-client.focused_inactive #4c566a #2e3440 #eceff4 #4c566a #4c566a
-client.unfocused #4c566a #2e3440 #eceff4 #4c566a #4c566a
-client.urgent #bf616a #2e3440 #eceff4 #bf616a #bf616a
-EOF
-
-cat << 'EOF' > ~/.config/ractuzed/waybar/config
-{
-  "layer": "top", "position": "top", "height": 32,
-  "modules-left": ["sway/workspaces"],
-  "modules-center": ["sway/window"],
-  "modules-right": ["pulseaudio", "clock"],
-  "sway/workspaces": { "format": "{icon}", "format-icons": { "1": "", "2": "", "3": "", "4": "", "5": "", "default": "" } },
-  "clock": { "format": "<span color=\"#88c0d0\"></span> {:%H:%M}" },
-  "pulseaudio": { "format": "{volume}% <span color=\"#88c0d0\">{icon}</span>", "format-icons": { "default": ["", "", ""] } }
-}
-EOF
-
-cat << 'EOF' > ~/.config/ractuzed/waybar/style.css
-* { font-family: "JetBrains Mono", "Font Awesome 6 Free", sans-serif; font-size: 13px; min-height: 0; }
-window#waybar { background-color: #2e3440; color: #eceff4; }
-#workspaces button { padding: 0 10px; color: #eceff4; }
-#workspaces button.focused { background-color: #88c0d0; color: #2e3440; border-radius: 4px; }
-#clock, #pulseaudio { padding: 0 15px; }
-EOF
-
-cat << 'EOF' > ~/.config/ractuzed/wofi/config
-width=400
-height=300
-show=drun
-prompt=Buscar...
-EOF
-
-cat << 'EOF' > ~/.config/ractuzed/wofi/style.css
-* { font-family: "JetBrains Mono"; font-size: 14px; }
-window { background-color: #2e3440; color: #eceff4; border-radius: 8px; border: 2px solid #88c0d0; }
-#input { background-color: #3b4252; color: #eceff4; margin: 10px; border-radius: 4px; }
-#entry:selected { background-color: #88c0d0; border-radius: 4px; }
-#entry:selected #text { color: #2e3440; font-weight: bold; }
-EOF
-
-cat << 'EOF' > ~/.config/ractuzed/mako/config
-background-color=#2e3440
-text-color=#eceff4
-border-color=#88c0d0
-border-size=2
-border-radius=6
-width=300
-height=100
-margin=12
-padding=12
-font=JetBrains Mono 10
-EOF
-
-cat << 'EOF' > ~/.config/ractuzed/alacritty/alacritty.toml
-[font]
-normal = { family = "JetBrains Mono", style = "Regular" }
-size = 11.0
-[colors.primary]
-background = "#2e3440"
-foreground = "#eceff4"
-[colors.normal]
-black = "#3b4252", red = "#bf616a", green = "#a3be8c", yellow = "#ebcb8b"
-blue = "#81a1c1", magenta = "#b48ead", cyan = "#88c0d0", white = "#e5e9f0"
-EOF
-
-echo "✅ ¡Archivos creados en ~/.config/ractuzed/"
